@@ -1,407 +1,424 @@
-/* место для вашего кода */
+/*
+
+В связи с тем, что макет, согласно фигме, на данный момент не адаптируемый, и его размер зафиксирован максимальной
+шириной в 1440px, пока что добавлен специальный класс для фиксированной ширины контейнера
+удобный для проверки pixel perfect. В дальнейшем, при адаптации, этот класс будет удален.
+
+*/
+
+.not-responsive-static-layout {
+  max-width: 1440px;
+  margin: auto;
+}
+
+/* #region Начало вспомогательных классов  */
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.letter-spacing-extended {
+  letter-spacing: 60px;
+}
+
+.no-letter-spacing {
+  letter-spacing: normal;
+}
+
+.aligned-text,
+.aligned-text_center,
+.aligned-text_right {
+  display: block;
+}
+
+.aligned-text {
+  text-align: left;
+}
+
+.aligned-text_center {
+  text-align: center;
+}
+
+.aligned-text_right {
+  text-align: right;
+}
+
+/* #endregion Конец вспомогательных классов  */
+
+/* #region Начало вспомогательных компонентов  */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.address {
+  max-width: 238px;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 24.3px;
+}
+
+.bet-button {
+  border: 1px solid #fff;
+  padding: 12px 32px;
+  color: inherit;
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.bet-button:hover {
+  transform: scale(1.03);
+}
+
+/* #endregion Конец вспомогательных компонентов  */
+
+/* #region Начало блока header  */
 
 .header {
-  margin: 92px 50px 96px 50px;
   display: grid;
-  grid-template-columns: 3.9fr 0.9fr 3.9fr;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 92px 49px 96px 51px;
 }
 
 .header__links-list {
   display: flex;
   align-items: center;
+  gap: 10px 33px;
+  list-style: circle;
 }
 
-.header__links-list-main {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.header__links-list-item,
 .header__links-list-item_no-bullit {
-  display: list-item;
-  list-style-type: none;
+  list-style: none;
 }
 
-.header__link_active,
 .header__link {
-  text-decoration: none;
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 18px;
-  font-style: normal;
   font-weight: 400;
+  font-size: 18px;
   line-height: normal;
+  text-underline-offset: 5px;
+  transition: text-underline-offset 0.3s ease;
 }
 
-.header__link {
-  display: list-item;
-  list-style-type: circle;
-  border-bottom: 1px solid black;
+.header__link:hover {
+  text-underline-offset: 7px;
 }
 
-/* Элементу с классои header__logo строго заданы ращмеры,
-так как это логотип, имеющий строгий размер */
+.header__link_active {
+  text-decoration: none;
+}
 
 .header__logo {
-  display: grid;
-  align-content: start;
-  width: 138px;
+  display: block;
+  justify-self: center;
+  width: 148px;
   height: 105px;
+  transition: transform 0.3s ease;
+}
+
+.header__logo:hover {
+  transform: scale(1.03);
 }
 
 .header__logo-image {
-  display: block;
-  align-content: start;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .header__address {
-  display: flex;
-  align-items: center;
-  justify-content: end;
+  justify-self: end;
 }
 
-.contacts-element {
-  width: 240px;
-  padding-right: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-style: normal;
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 23.6px;
+.header__address-link {
+  text-underline-offset: 5px;
+  transition: text-underline-offset 0.3s ease;
 }
 
-.mail-address,
-.phone-address {
-  text-decoration: none;
-  display: flex;
-  align-self: flex-start;
-  border-bottom: 0.5px solid black;
+.header__address-link:hover {
+  text-underline-offset: 7px;
 }
 
-.city-address-second,
-.city-address-first {
-  display: flex;
-  align-self: flex-start;
-}
+/* #endregion Конец блока header */
 
-/* Элементу с классом cover строго заданы размеры,
-так как это фоновое изображение */
+/* #region Начало блока cover  */
 
 .cover {
-  background-image: url(../images/cover.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
   z-index: 1;
+  padding: 173px 50px 50px 50px;
+  color: #fff;
+  background-color: #a7a7a7;
+  background-image: url("../images/cover.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .cover__title {
-  z-index: 2;
-  padding-top: 165px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  text-transform: uppercase;
-  row-gap: 19px;
-  grid-template-areas:
-    "start start start"
-    "center center center"
-    "end end end ";
-}
-
-.aligned-text_right,
-.aligned-text_center,
-.aligned-text {
-  color: #fff;
-  font-family: Raleway, sans-serif;
-  font-size: 100px;
-  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-bottom: 135px;
   font-weight: 700;
-  letter-spacing: 30px;
-}
-
-.aligned-text {
-  text-align: start;
-  grid-area: start;
-  line-height: 115%;
-  margin: 0px 50px;
-}
-
-.aligned-text_center {
+  font-size: 100px;
   line-height: 100%;
-  text-align: center;
-  grid-area: center;
-  margin: 0px 95px 0px 65px;
-  justify-self: center;
-}
-
-.aligned-text_right {
-  line-height: 70px;
-  text-align: end;
-  grid-area: end;
-  margin: 0px 50px 0px 50px;
-}
-
-.new-letter-spacing {
-  letter-spacing: 60px;
-}
-
-.no-letter-spacing {
-  letter-spacing: 0px;
+  letter-spacing: 30px;
+  text-transform: uppercase;
 }
 
 .cover__description {
   display: flex;
-  justify-content: space-between;
-  margin: 105px 50px 0px 50px;
-  padding-bottom: 50px;
-}
-
-.bet-button,
-.cover__description-text {
-  color: #fff;
-  text-align: center;
-  font-family: Raleway, sans-serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-  text-transform: uppercase;
-}
-
-.cover__description-text {
-  padding-left: 372px;
-  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: end;
-  letter-spacing: 0px;
-  word-spacing: 17px;
 }
 
-.cover__description-text-new-word-spacing{
-  word-spacing: 19px;
+.cover__description-text {
+  margin-right: 80px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  word-spacing: 18px;
 }
 
-.bet-button {
-  display: flex;
-  padding: 12px 32px;
-  border: 1px solid #ffffff;
-  background: none;
-}
+/* #endregion Конец блока cover */
+
+/*
+
+!Стоит отметить, что дальше в коде идут странные большие отступы сверху у блоков секций:
+
+Данный отступ сверху так как в целом нет других классов у main
+которые могли бы по сути задавать поля для блоков. Те можно
+считать что они полностью независимые блоки???, иначе
+если бы например был main__section или чот такое можно было бы задать margin
+
+*/
+
+/* #region Начало блока lots  */
 
 .lots {
-  margin: 180px 50px 0px 50px;
-  flex-shrink: 0;
+  padding: 179px 50px 50px 50px;
 }
 
 .lots__heading {
-  margin-left: 40px;
   margin-bottom: 27px;
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 40px;
-  font-style: normal;
+  margin-left: 40px;
   font-weight: 700;
+  font-size: 40px;
   line-height: normal;
   text-transform: uppercase;
 }
 
 .lots__card-list {
   display: flex;
-  list-style-type: none;
-  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 30px;
+  list-style: none;
 }
 
-.card-link {
-  text-decoration: none;
-  display: block;
-  height: 100%;
-}
-
-/* Элеменам с классом card задал четку ширину, 
-так как данный элемент состоит из определенного контента и 
-для его позиционированиия необходимо значение ширины
-Для корректного отображения на устройствах с другой диагональю экрана 
-родительскому списку добавлено свойство flex-wrap: wrap */
-
-.card {
-  z-index: 2;
-  flex-grow: 1;
-  width: 430px;
+.lots__card-list-item {
+  flex: 1 1 430px;
   min-height: 450px;
-  height: 100%;
-  padding: 50px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card_type_film {
-  background-image: url(../images/card-lot-01.jpg);
-  background-size: cover;
-}
-
-.card_type_book {
-  background-image: url(../images/card-lot-02.jpg);
-  background-size: cover;
-}
-
-.card_type_picture {
-  background-image: url(../images/card-lot-03.jpg);
-  background-size: cover;
-}
-
-.card__title {
-  color: #fff;
-  font-family: Raleway, sans-serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-  text-decoration-line: underline;
-  text-transform: uppercase;
-  text-decoration-skip-ink: none;
-}
-
-.card__text {
-  color: #fff;
-  font-family: Raleway, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
-  justify-content: space-around;
 }
 
 .lots__look-more-link {
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-top: 30px;
   margin-left: 40px;
-  text-decoration: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: normal;
+  text-underline-offset: 5px;
+  transition: text-underline-offset 0.3s ease;
 }
 
-.lots__look-more-link-text {
-  text-decoration: none;
-  border-bottom: 1px solid black;
+.lots__look-more-link:hover {
+  text-underline-offset: 7px;
 }
+
+/* #endregion Конец блока lots */
+
+/* #region Начало компонента card */
+
+.card-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 50px 40px;
+  color: #fff;
+}
+
+.card_type_film,
+.card_type_book,
+.card_type_picture {
+  background-color: #a7a7a7;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card_type_film {
+  background-image: url("../images/card-lot-01.jpg");
+}
+
+.card_type_book {
+  background-image: url("../images/card-lot-02.jpg");
+}
+
+.card_type_picture {
+  background-image: url("../images/card-lot-03.jpg");
+}
+
+.card__title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.card__text {
+  margin-top: auto;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+/* #endregion Конец компонента card */
+
+/* #region Начало блока about  */
 
 .about {
-  margin: 180px 50px 184px 50px;
-}
-
-.about__column {
   display: grid;
-  grid-template-columns: 430px 1fr;
+  grid-template-columns: min-content 1fr;
+  column-gap: 28px;
+  padding: 130px 50px 90px 50px;
 }
-
-/* В случае с классом about__logo я строго указал размеры блока, так как
-это необходимо для формирования черного круга нужного размера */
 
 .about__logo {
   display: flex;
   width: 240px;
   height: 240px;
-  border-radius: 120px;
-  background-color: #000;
-  justify-self: center;
+  margin: 0 94px;
+  border-radius: 50%;
+  background: #000;
 }
-
-/* В случае с классом about__logo-image я строго указал его размеры, 
-так как это класс, относящийся к логотипу */
 
 .about__logo-image {
-  display: grid;
   width: 148px;
   height: 114px;
-  align-self: center;
-  margin-left: 46px;
-}
-
-.about__title-and-text-wrapper {
-  margin: 101px 0px 0px 25px;
-  display: grid;
-  row-gap: 30px;
+  margin: auto;
+  object-fit: contain;
 }
 
 .about__title {
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 40px;
-  font-style: normal;
+  margin-top: 102px;
+  margin-bottom: 100px;
   font-weight: 700;
+  font-size: 40px;
   line-height: normal;
   text-transform: uppercase;
-  margin-bottom: 70px;
 }
 
 .about__text {
-  color: #000;
-  font-family: Raleway, sans-serif;
-  font-size: 20px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 23px;
+  font-size: 20px;
+  line-height: normal;
 }
 
-footer {
-  margin: 0px 50px 90px 50px;
-  display: flex;
-  justify-content: space-between;
+.about__text:not(:last-of-type) {
+  margin-bottom: 25px;
 }
 
-.footer__menu {
+/* #endregion Конец блока about */
+
+/* #region Начало блока footer  */
+
+.footer {
   display: grid;
-  align-content: start;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  padding: 90px 50px;
+}
+
+.footer__address-link {
+  text-underline-offset: 5px;
+  transition: text-underline-offset 0.3s ease;
+}
+
+.footer__address-link:hover {
+  text-underline-offset: 7px;
 }
 
 .footer__menu-list {
-  list-style-type: none;
+  text-align: center;
+  list-style: none;
 }
 
 .footer__menu-link {
-  display: grid;
-  align-self: center;
-  color: #000;
-  text-align: center;
-  font-family: Raleway, sans-serif;
-  font-size: 18px;
-  font-style: normal;
   font-weight: 400;
+  font-size: 18px;
   line-height: normal;
-  text-decoration-skip-ink: none;
+  text-underline-offset: 2px;
+  transition: text-underline-offset 0.3s ease;
+}
+
+.footer__menu-link:hover {
+  text-underline-offset: 4px;
 }
 
 .footer__menu-link_active {
   text-decoration: none;
-  border-bottom: none;
 }
 
-/* В элементе с классом foter__social-list я задал значения ширины
-для того, чтобы не задавать размеры каждой иконке социальной сети. 
-В моем случае достаточно выставить нужное расстояние между элементами
-и иконки становятся нужного размера. */
+.footer__social-link {
+  display: block;
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease;
+}
+
+.footer__social-link:hover {
+  transform: translateY(-3px);
+}
 
 .footer__social-list {
-  list-style-type: none;
   display: flex;
-  gap: 48px;
+  flex-wrap: wrap;
+  justify-self: end;
+  align-items: center;
+  gap: 20px 48px;
+  max-width: 240px;
+  list-style: none;
 }
 
-.footer__social-list-item-logo{
-  width: 48px;
-}
+/* #endregion Конец блока footer */
