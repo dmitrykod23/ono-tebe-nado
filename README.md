@@ -1,1 +1,1 @@
-https://github.com/dmitrykod23/ono-tebe-nado
+https://github.com/dmitrykod23/ono-tebe-nado-ad
